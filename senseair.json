@@ -1,0 +1,26 @@
+{
+  "name": "Датчик CO2",
+  "manufacturer": "ESPHome",
+  "model": "Senseair",
+  "catalogId": 1729,
+  "services": [
+    {
+      "type": "CarbonDioxideSensor",
+      "logics": [
+        {
+          "type": "CarbonDioxideDetectedFromCarbonDioxideLevel"
+        }
+      ],
+      "characteristics": [
+        {
+          "type": "CarbonDioxideLevel",
+          "link": {
+            "type": "Integer",
+            "topicSearch": "(.*)/sensor/(senseair.*)/state",
+            "topicGet": "(1)/sensor/(2)/state"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "name": "Tion Breazer",
+  "manufacturer": "Tion",
+  "model": "4S",
+  "services": [
+    {
+      "name": "Бризер",
+      "type": "HeaterCooler",
+      "characteristics": [
+        {
+          "type": "Active",
+          "link": {
+            "type": "String",
+            "topicSearch": "(.*/climate/tion.*)/mode/state",
+            "topicGet": "(1)/mode/state",
+            "topicSet": "(1)/mode/command",
+            "map": {
+              "INACTIVE": "off",
+              "ACTIVE": "fan_only;heat"
+            }
+          }
+        },
+        {
+          "type": "CurrentTemperature",
+          "link": {
+            "type": "Double",
+            "topicGet": "(1)/current_temperature/state",
+            "checkValue": true
+          }
+        },
+        {
+          "type": "HeatingThresholdTemperature",
+          "link": {
+            "type": "Integer",
+            "topicGet": "(1)/target_temperature/state",
+            "topicSet": "(1)/target_temperature/command"
+          },
+          "minValue": 1,
+          "maxValue": 25,
+          "minStep": 1
+        },
+        {
+          "type": "CurrentHeaterCoolerState",
+          "link": {
+            "type": "String",
+            "topicGet": "(1)/mode/state",
+            "map": {
+              "INACTIVE": "off",
+              "HEATING": "heat",
+              "COOLING": "fan_only"
+            }
+          },
+          "validValues": "INACTIVE,HEATING,COOLING"
+        },
+        {
+          "type": "TargetHeaterCoolerState",
+          "link": {
+            "type": "String",
+            "topicGet": "(1)/mode/state",
+            "topicSet": "(1)/mode/command",
+            "map": {
+              "HEAT": "heat",
+              "COOL": "fan_only"
+            }
+          },
+          "validValues": "HEAT,COOL"
+        },
+        {
+          "type": "RotationSpeed",
+          "link": {
+            "type": "Integer",
+            "topicGet": "(1)/fan_mode/state",
+            "topicSet": "(1)/fan_mode/command"
+          },
+          "minValue": 1,
+          "maxValue": 6
+        }
+      ]
+    }    
+  ]
+}

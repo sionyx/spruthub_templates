@@ -1,0 +1,32 @@
+{
+  "name": "Датчик давления/температуры",
+  "manufacturer": "ESPHome",
+  "model": "BMP280",
+  "catalogId": 1750,
+  "services": [
+    {
+      "type": "C_AtmosphericPressureSensor",
+      "characteristics": [
+        {
+          "type": "C_CurrentAtmosphericPressure",
+          "link": {
+            "topicSearch": "(.*)/sensor/(bmp.*)_pressure/state",
+            "topicGet": "(1)/sensor/(2)_pressure/state"
+
+          }
+        }
+      ]
+    },
+    {
+      "type": "TemperatureSensor",
+      "characteristics": [
+        {
+          "type": "CurrentTemperature",
+          "link": {
+            "topicGet": "(1)/sensor/(2)_temperature/state"
+          }
+        }
+      ]
+    }
+  ]
+}
